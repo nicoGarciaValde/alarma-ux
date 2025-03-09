@@ -1,8 +1,8 @@
 package com.uniandes.wakey.ui.theme
 
 import androidx.compose.material3.Typography
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import com.uniandes.wakey.R
@@ -14,6 +14,20 @@ val provider = GoogleFont.Provider(
     certificates = R.array.com_google_android_gms_fonts_certs
 )
 
+
+val titleFontFamily = FontFamily(
+    Font(
+        googleFont = GoogleFont("Open Sans Hebrew"),
+        fontProvider = provider,
+        weight = FontWeight.Bold
+    ),
+    Font(
+        googleFont = GoogleFont("Open Sans Hebrew"),
+        fontProvider = provider,
+        weight = FontWeight.Bold
+    )
+)
+
 val bodyFontFamily = FontFamily(
     Font(
         googleFont = GoogleFont("Open Sans"),
@@ -23,7 +37,7 @@ val bodyFontFamily = FontFamily(
 
 val displayFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("Open Sans"),
+        googleFont = GoogleFont("Open Sans Hebrew"),
         fontProvider = provider,
     )
 )
@@ -38,9 +52,9 @@ val AppTypography = Typography(
     headlineLarge = baseline.headlineLarge.copy(fontFamily = displayFontFamily),
     headlineMedium = baseline.headlineMedium.copy(fontFamily = displayFontFamily),
     headlineSmall = baseline.headlineSmall.copy(fontFamily = displayFontFamily),
-    titleLarge = baseline.titleLarge.copy(fontFamily = displayFontFamily),
-    titleMedium = baseline.titleMedium.copy(fontFamily = displayFontFamily),
-    titleSmall = baseline.titleSmall.copy(fontFamily = displayFontFamily),
+    titleLarge = baseline.titleLarge.copy(fontFamily = titleFontFamily),
+    titleMedium = baseline.titleMedium.copy(fontFamily = titleFontFamily),
+    titleSmall = baseline.titleSmall.copy(fontFamily = titleFontFamily),
     bodyLarge = baseline.bodyLarge.copy(fontFamily = bodyFontFamily),
     bodyMedium = baseline.bodyMedium.copy(fontFamily = bodyFontFamily),
     bodySmall = baseline.bodySmall.copy(fontFamily = bodyFontFamily),
