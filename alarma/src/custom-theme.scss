@@ -1,0 +1,146 @@
+// Definir colores principales
+$primary: #FFB692; // Color Principal
+$on-primary: #542103; // Color sobre el primario
+$primary-container: #703717; // Contenedor primario
+$on-primary-container: #FFDBCB; // Texto sobre contenedor primario
+
+// Colores secundarios
+$secondary: #E6BEAC;
+$on-secondary: #432A1E;
+$secondary-container: #5C4033;
+$on-secondary-container: #FFDBCB;
+
+// Colores de fondo
+$background: #1A120E;
+$on-background: #F0DFD8;
+$surface: #1A120E;
+$surface-variant: #52443D;
+$on-surface: #F0DFD8;
+$on-surface-variant: #D7C2B9;
+$surface-container-high: #322824;
+
+// Colores de estado
+$error: #FFB4AB;
+$on-error: #690005;
+$error-container: #93000A;
+$on-error-container: #FFDAD6;
+$outline: #A08D85;
+$outline-variant: #52443D;
+
+// Aplicar variables globales
+:root {
+  --primary: #{$primary};
+  --on-primary: #{$on-primary};
+  --primary-container: #{$primary-container};
+  --on-primary-container: #{$on-primary-container};
+
+  --secondary: #{$secondary};
+  --on-secondary: #{$on-secondary};
+  --secondary-container: #{$secondary-container};
+  --on-secondary-container: #{$on-secondary-container};
+
+  --background: #{$background};
+  --on-background: #{$on-background};
+  --surface: #{$surface};
+  --surface-variant: #{$surface-variant};
+  --on-surface-variant: #{$on-surface-variant};
+  --on-surface: #{$on-surface};
+
+  --error: #{$error};
+  --on-error: #{$on-error};
+  --error-container: #{$error-container};
+  --on-error-container: #{$on-error-container};
+  --outline: #{$outline};
+  --outline-variant: #{$outline-variant};
+  --surface-container-high: #{$surface-container-high};
+}
+:root {
+  --font-headline: 'Open Sans Hebrew', sans-serif;
+  --font-title: 'Open Sans Hebrew', sans-serif;
+  --font-body: 'Open Sans Hebrew', sans-serif;
+  --font-label: 'Open Sans Hebrew', sans-serif;
+}
+
+
+/* Estilos Tipográficos */
+.display-large {
+  font-family: var(--font-headline);
+  font-size: 57px;
+  font-weight: 500;
+}
+.display-medium {
+  font-family: var(--font-headline);
+  font-size: 45px;
+  font-weight: 500;
+}
+.display-small {
+  font-family: var(--font-headline);
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.headline-large {
+  font-family: var(--font-headline);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.headline-medium {
+  font-family: var(--font-headline);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.headline-small {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.title-large {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.title-medium {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.title-small {
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.body-large {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.body-medium {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.body-small {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.label-large {
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.label-small {
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 400;
+}

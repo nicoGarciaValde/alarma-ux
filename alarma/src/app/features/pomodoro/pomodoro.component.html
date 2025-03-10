@@ -1,0 +1,170 @@
+<div class="row m-0 container-gen">
+  <div class="col-5 mt-5 ms-5">
+    <div class="p-3">
+      <form [formGroup]="pomodoroForm">
+        <div class="row mb-3 align-items-center">
+          <div class="col-6">
+            <span class="headline-small">Tiempo Pomodoro</span>
+          </div>
+          <div class="col-3">
+            <div class="ms-5 custom-input-container">
+              <mat-form-field class="custom-input" appearance="outline">
+                <mat-label>Minutos</mat-label>
+                <input matInput type="number" formControlName="tiempoPomodoro" class="text-input no-spinner" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+          <div class="col-6">
+            <span class="headline-small">Tiempo Descanso Corto</span>
+          </div>
+          <div class="col-3">
+            <div class="ms-5 custom-input-container">
+              <mat-form-field class="custom-input" appearance="outline">
+                <mat-label>Minutos</mat-label>
+                <input matInput type="number" formControlName="tiempoDescansoCorto" class="text-input no-spinner" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+          <div class="col-6">
+            <span class="headline-small">Tiempo Descanso Largo</span>
+          </div>
+          <div class="col-3">
+            <div class="ms-5 custom-input-container">
+              <mat-form-field class="custom-input" appearance="outline">
+                <mat-label>Minutos</mat-label>
+                <input matInput type="number" formControlName="tiempoDescansoLargo" class="text-input no-spinner"  />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 align-items-center">
+          <div class="col-6">
+            <span class="headline-small">Número de Repeticiones</span>
+          </div>
+          <div class="col-3">
+            <div class="ms-5 custom-input-container">
+              <mat-form-field class="custom-input" appearance="outline">
+                <mat-label>Cantidad</mat-label>
+                <input matInput type="number" formControlName="numeroRepeticiones" class="text-input no-spinner" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- Frase Motivacional -->
+    <div class="row">
+      <div class="col-6 container-motivation m-4">
+        <div class="p-3 text-center">
+          <!-- <img
+            src="assets/motivation-icon.png"
+            alt="Motivación"
+            class="motivation-icon"
+          /> -->
+          <mat-icon>favorite</mat-icon>
+          <p class="mt-2">El éxito no es un destino, es un viaje, disfrútalo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Divider alineado al inicio -->
+  <div class="col-1 h-100 d-flex align-items-start" >
+    <mat-divider vertical class="divider-start"></mat-divider>
+  </div>
+  <div class="col-5 content-second">
+    <mat-sidenav-container class="sidenav-container no-spinner">
+      <!-- Contenido Principal -->
+      <mat-sidenav-content class="content">
+
+        <!-- Selector de Modos -->
+        <div class="mode-selector">
+          <mat-button-toggle-group class="mode-buttons w-100" [(ngModel)]="modoActual">
+            <div class="row w-100">
+              <div class="col-4">
+                <mat-button-toggle [value]="'pomodoro'">
+                  <mat-icon class="icons">history</mat-icon>
+                  <div>Pomodoro</div>
+                </mat-button-toggle>
+              </div>
+              <div class="col-4">
+                <mat-button-toggle [value]="'short-break'">
+                  <mat-icon class="icons">self_improvement</mat-icon>
+                  <div>Descanso Corto</div>
+                </mat-button-toggle>
+              </div>
+              <div class="col-4">
+                <mat-button-toggle [value]="'long-break'">
+                  <mat-icon class="icons">stop_circle</mat-icon>
+                  <div>Descanso Largo</div>
+                </mat-button-toggle>
+              </div>
+            </div>
+          </mat-button-toggle-group>
+        </div>
+
+      <!-- Temporizador Principal -->
+      <div class="timer-box mt-5">
+        <div class="d-flex justify-content-center align-items-center mt-5">
+          <!-- Minutos -->
+          <div class="time-box active">
+            <span *ngIf="minutos != 0" class="display-large">{{ minutos }}</span>
+            <span *ngIf="minutos == 0" class="display-large">{{ '00' }}</span>
+          </div>
+          <span class="separator">:</span>
+          <!-- Segundos -->
+          <div class="time-box">
+            <span *ngIf="segundos != 0" class="display-large">{{ segundos }}</span>
+            <span *ngIf="segundos == 0" class="display-large">{{  '00' }}</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between ms-4">
+          <span class="label body-large">Minutos</span>
+          <span class="label body-large me-4">Segundos</span>
+        </div>
+
+        <!-- Configuración de Repeticiones y Pausas -->
+        <div class="mt-5">
+          <div class="row mb-2 ">
+            <div class="col-7">
+              <span class="headline-small">Número Repeticiones</span>
+            </div>
+            <div class="col-5">
+              <mat-form-field class="containers-input" appearance="outline">
+                <mat-label>{{pomodorosCompletados}}</mat-label>
+                <input matInput type="number" placeholder="-">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row mb-3 mt-4">
+            <div class="col-7">
+              <span class="headline-small">Número de Pausas</span>
+            </div>
+            <div class="col-5 ">
+              <mat-form-field class="containers-input" appearance="outline">
+                <mat-label>{{pausasRealizadas}}</mat-label>
+                <input matInput type="number" placeholder="-">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón de Inicio -->
+        <div class="text-center mt-0">
+          <button mat-button class="start-btn" (click)="iniciarPomodoro()" [disabled]="pomodoroForm.invalid">
+            {{ isRunning ? 'Pausar' : 'Iniciar' }}
+          </button>
+        </div>
+      </div>
+    </mat-sidenav-content>
+    </mat-sidenav-container>
+
+  </div>
+</div>
