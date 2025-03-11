@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'dispositivos', loadChildren: () => import('./features/devices/devices.module').then(m => m.DevicesModule) },
   { path: 'pomodoro', loadChildren: () => import('./features/pomodoro/pomodoro.module').then(m => m.PomodoroModule) },
-  { path: '', redirectTo: 'devices', pathMatch: 'full' },
-  { path: '**', redirectTo: 'devices' }
+  { path: '', redirectTo: 'dispositivos', pathMatch: 'full' },
+  { path: '**', redirectTo: 'dispositivos' }
 ];
 
 @NgModule({
