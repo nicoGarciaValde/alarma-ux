@@ -1,0 +1,22 @@
+# Archivos de configuración de Android Studio
+mobile/*.iml
+mobile/.gradle/
+mobile/local.properties
+mobile/.idea/
+
+# Cachés y archivos generados
+mobile/.idea/caches/
+mobile/.idea/libraries/
+mobile/.idea/modules.xml
+mobile/.idea/workspace.xml
+mobile/.idea/navEditor.xml
+mobile/.idea/assetWizardSettings.xml
+
+# Archivos del sistema
+.DS_Store
+
+# Carpetas de compilación y salida
+mobile/build/
+mobile/captures/
+mobile/.externalNativeBuild/
+mobile/.cxx/
