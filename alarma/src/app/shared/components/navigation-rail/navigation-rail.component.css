@@ -44,18 +44,36 @@ nav li {
 }
 
 nav a {
-  text-decoration: none;
-  color: var(--on-surface-variant);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  color: var(--on-surface-variant);
   font-size: 12px;
   padding: 10px 0;
   width: 100%;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
-.icons {
-  color: var(--on-surface-variant);
-  font-size: 25px;
+/* Estilo del icono cuando está activo */
+.active-link mat-icon {
+  background:  var(--secondary-container);
+  height: 32px;
+  width: 56px;
+  padding-top: 4px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+

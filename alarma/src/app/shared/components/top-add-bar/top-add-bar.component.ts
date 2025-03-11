@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-top-add-bar',
@@ -7,13 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopAddBarComponent implements OnInit {
 
-  title: any = 'Dispositivos - Pomodoto titulo test'
-  constructor() { }
+  title: string = '';
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      this.setTitleFromUrl(event.urlAfterRedirects);
+    });
   }
-
-  goBack(){}
-
+  // Método para establecer el título dinámicamente
+  setTitleFromUrl(url: string) {
+    if (url.includes('/pomodoro')) {
+      this.title = 'Pomodoro';
+    } else if (url.includes('/dispositivos')) {
+      this.title = 'Dispositivos';
+    }
+  }
+  goBack() {
+    this.router.navigate(['..'], { relativeTo: this.route });
+  }
 }
