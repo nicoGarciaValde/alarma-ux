@@ -19,4 +19,6 @@
     <string name="select_calendar">Selecciona calendario</string>
     <string name="news_selection_message">Selecciona las categorías de tu agrado</string>
     <string name="weather_permission_required">Debes habilitar los permisos de ubicación</string>
+    <string name="file_name">Cotización.pdf</string>
+    <string name="alarm_deleted">Alarma borrada</string>
 </resources>

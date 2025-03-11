@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -29,7 +30,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.uniandes.wakey.R
-import com.uniandes.wakey.ui.components.WakeyFAButton
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -135,7 +135,7 @@ fun ModalAddReminderBottomSheet(
                 )
             }
 
-            WakeyFAButton (
+            FloatingActionButton (
                 onClick = {
                     if (title.isBlank() || date.isBlank() || hour.isBlank()) {
                         isTitleError = true

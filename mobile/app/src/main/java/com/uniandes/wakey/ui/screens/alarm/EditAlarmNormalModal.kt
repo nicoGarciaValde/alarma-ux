@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AttachFile
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.twotone.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -28,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import com.uniandes.wakey.R
 import com.uniandes.wakey.ui.components.DaysSelection
 import com.uniandes.wakey.ui.theme.WakeyWakeyTheme
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,10 +48,12 @@ import com.uniandes.wakey.ui.theme.WakeyWakeyTheme
 fun ModalEditNormalSheet(
     alarm: Alarm,
     onDismissRequest: (Alarm) -> Unit,
+    onDeleteAlarm: () -> Unit,
     sheetState: SheetState,
 ) {
     var repeat by remember { mutableStateOf(alarm.repeat) }
     var days by remember { mutableStateOf(alarm.days.toSet()) }
+    var isFileAdded by remember { mutableStateOf(false) }
     ModalBottomSheet(
         onDismissRequest = {
             onDismissRequest(
@@ -115,22 +120,36 @@ fun ModalEditNormalSheet(
 
                 Row {
                     Button(
-                        onClick = {},
+                        onClick = {
+                            isFileAdded = isFileAdded.not()
+                        },
                         colors = ButtonDefaults.elevatedButtonColors()
                     ) {
                         Row {
                             Icon(
-                                imageVector = Icons.Default.AttachFile,
+                                imageVector = if(isFileAdded) {
+                                    Icons.Default.Close
+                                } else {
+                                    Icons.Default.AttachFile
+                                },
                                 contentDescription = ""
                             )
                             Spacer(Modifier.width(8.dp))
-                            Text(stringResource(R.string.add_file))
+                            Text(
+                                if (isFileAdded) {
+                                    stringResource(R.string.file_name)
+                                } else {
+                                    stringResource(R.string.add_file)
+                                }
+                            )
                         }
                     }
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = {
+                        onDeleteAlarm()
+                    }) {
                         Icon(
                             imageVector = Icons.TwoTone.Delete,
                             contentDescription = ""
@@ -147,13 +166,22 @@ fun ModalEditNormalSheet(
 @Composable
 @Preview
 fun ModalEditNormalSheetPreview() {
+    val sheetState = rememberModalBottomSheetState()
+    val coroutineScope = rememberCoroutineScope()
     WakeyWakeyTheme {
         ModalEditNormalSheet(
             alarm = Alarm(6, 10, true),
             onDismissRequest = {
-
+                coroutineScope.launch {
+                    sheetState.hide()
+                }
             },
-            sheetState = rememberModalBottomSheetState()
+            onDeleteAlarm = {
+                coroutineScope.launch {
+                    sheetState.hide()
+                }
+            },
+            sheetState = sheetState
         )
     }
 }

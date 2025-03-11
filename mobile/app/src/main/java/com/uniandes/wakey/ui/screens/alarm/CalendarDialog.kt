@@ -30,8 +30,13 @@ fun CalendarPickerDialog(
     )
     var selectedCalendar by remember { mutableStateOf(emptyList<String>()) }
     AlertDialog(
-        onDismiss = {onDismiss(selectedCalendar.isNotEmpty())},
-        positiveButton = stringResource(R.string.accept)
+        onDismiss = {
+            onDismiss(selectedCalendar.isNotEmpty())
+        },
+        positiveButton = stringResource(R.string.accept),
+        onButtonClickListener = {
+            onDismiss(selectedCalendar.isNotEmpty())
+        }
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -39,7 +44,7 @@ fun CalendarPickerDialog(
             Text(
                 stringResource(R.string.select_calendar),
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.headlineSmall
+                style = MaterialTheme.typography.headlineSmall.copy()
             )
             for (calendar in calendarList) {
                 CheckItemView(

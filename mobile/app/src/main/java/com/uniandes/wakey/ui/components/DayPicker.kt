@@ -34,7 +34,6 @@ fun DaysSelection(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .fillMaxWidth()
-
     ) {
         days.forEach { day ->
             CircularDayCheckbox(

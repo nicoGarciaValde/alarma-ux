@@ -52,6 +52,9 @@ fun AlarmListScreen() {
             sheetState = editNormalSheetState,
             onDismissRequest = {
                 showEditNormalBottomSheet = false
+            },
+            onDeleteAlarm = {
+
             }
         )
     }

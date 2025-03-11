@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -38,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.uniandes.wakey.R
 import com.uniandes.wakey.ui.components.WakeyCard
-import com.uniandes.wakey.ui.components.WakeyFAButton
 import com.uniandes.wakey.ui.theme.WakeyWakeyTheme
 import kotlinx.coroutines.launch
 
@@ -97,7 +97,7 @@ fun RemindersScreen() {
                         )
                     }
                 }
-                WakeyFAButton(
+                FloatingActionButton(
                     onClick = { showBottomSheet = true },
                     modifier = Modifier
                         .align(Alignment.BottomEnd)

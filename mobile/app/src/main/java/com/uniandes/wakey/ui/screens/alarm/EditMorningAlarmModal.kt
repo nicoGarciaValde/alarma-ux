@@ -2,12 +2,18 @@ package com.uniandes.wakey.ui.screens.alarm
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Cloud
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Newspaper
+import androidx.compose.material.icons.twotone.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -38,6 +44,7 @@ fun ModalMorningAlarmSheet(
     onChangeWeather: (Boolean) -> Unit = {},
     onChangeCalendar: (Boolean) -> Unit = {},
     onChangeNews: (Boolean) -> Unit = {},
+    onDeleteAlarm: () -> Unit = {},
     snackbarHostState: SnackbarHostState
 ) {
 
@@ -89,6 +96,21 @@ fun ModalMorningAlarmSheet(
                         onChangeNews(alarm.isNewsActive.not())
                     }
                 )
+
+               Row(
+                   Modifier.fillMaxWidth()
+               ) {
+                   Spacer(modifier = Modifier.weight(1f))
+
+                   IconButton(onClick = {
+                       onDeleteAlarm()
+                   }) {
+                       Icon(
+                           imageVector = Icons.TwoTone.Delete,
+                           contentDescription = ""
+                       )
+                   }
+               }
             }
         }
     )
@@ -103,8 +125,9 @@ fun ModalMorningAlarmSheetPreview() {
         var showPermissionDialog by remember { mutableStateOf(false) }
         var showCalendarDialog by remember { mutableStateOf(false) }
         var showNewsDialog by remember { mutableStateOf(false) }
-        var snackbarHostState by remember { mutableStateOf(SnackbarHostState()) }
+        val snackbarHostState by remember { mutableStateOf(SnackbarHostState()) }
         val coroutineScope = rememberCoroutineScope()
+        val sheetState = rememberModalBottomSheetState()
         val context = LocalContext.current
 
         val alarm by remember { mutableStateOf(Alarm(6, 10, true)) }
@@ -116,7 +139,7 @@ fun ModalMorningAlarmSheetPreview() {
             onDismissRequest = {
 
             },
-            sheetState = rememberModalBottomSheetState(),
+            sheetState = sheetState,
             onChangeWeather = {
                 showPermissionDialog = true
             },
@@ -125,6 +148,12 @@ fun ModalMorningAlarmSheetPreview() {
             },
             onChangeNews = {
                 showNewsDialog = true
+            },
+            onDeleteAlarm = {
+                coroutineScope.launch {
+                    sheetState.hide()
+                    snackbarHostState.showSnackbar(message = context.getString(R.string.alarm_deleted))
+                }
             },
             snackbarHostState = snackbarHostState
         )
