@@ -1,0 +1,16 @@
+.layout-container {
+  height: 100vh;
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.page-content {
+  flex-grow: 1;
+  padding: 16px;
+  background-color: var(--background);
+}

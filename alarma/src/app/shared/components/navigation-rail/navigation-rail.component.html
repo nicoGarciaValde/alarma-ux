@@ -1,0 +1,40 @@
+<mat-sidenav-container class="sidenav-container no-spinner">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <nav>
+      <ul>
+        <li>
+          <a mat-button routerLink="/dispositivos" routerLinkActive="active-link" [disableRipple]="true">
+            <span class="icon-wrapper">
+              <mat-icon class="icons">history</mat-icon>
+            </span>
+            <span>Dispositivos</span>
+          </a>
+        </li>
+        <li>
+          <a mat-button routerLink="/pomodoro" routerLinkActive="active-link" [disableRipple]="true">
+            <span class="icon-wrapper">
+              <mat-icon class="icons">timer</mat-icon>
+            </span>
+            <span>Pomodoro</span>
+          </a>
+        </li>
+        <li>
+          <a mat-button routerLink="/estadisticas" routerLinkActive="active-link" [disableRipple]="true">
+            <span class="icon-wrapper">
+              <mat-icon class="icons">star</mat-icon>
+            </span>
+            <span>Estadísticas</span>
+          </a>
+        </li>
+        <li>
+          <a mat-button routerLink="/cuenta" routerLinkActive="active-link" [disableRipple]="true">
+            <span class="icon-wrapper">
+              <mat-icon class="icons">account_circle</mat-icon>
+            </span>
+            <span>Cuenta</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </mat-sidenav>
+</mat-sidenav-container>
