@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use './paletts.scss' as palettes;
+
 // Definir colores principales
 $primary: #FFB692; // Color Principal
 $on-primary: #542103; // Color sobre el primario
@@ -144,3 +147,5 @@ $outline-variant: #52443D;
   font-size: 12px;
   font-weight: 400;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
