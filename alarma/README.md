@@ -5,15 +5,14 @@
 Este es un proyecto desarrollado en **Angular**, diseñado para ejecutarse en un entorno local. A continuación, encontrarás las instrucciones para instalar, configurar y ejecutar la aplicación.
 # Alarma
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
----
-
 ## 📋 **Requisitos Previos**
 
 Antes de ejecutar el proyecto, asegúrate de tener instalado:
+This project was generated with 
+[Angular CLI](https://github.com/angular/angular-cli)  version 15.2.6.
 
 - [Node.js](https://nodejs.org/) (Versión recomendada: **LTS**)
-- [Angular CLI](https://angular.io/cli) (Interfaz de Línea de Comandos de Angular)
+- [Angular CLI](https://angular.io/cli) (Interfaz de Línea de Comandos de Angular) 
 - [Git](https://git-scm.com/) (Opcional, pero recomendado)
 
 Puedes verificar las versiones instaladas ejecutando:
@@ -37,13 +36,13 @@ npm install -g @angular/cli
 1️⃣ **Clona el repositorio**:
 
 ```sh
-git clone https://github.com/nicoGarciaValde/alarma-ux/tree/Creacion_pomodoro/alarma
+git clone https://github.com/nicoGarciaValde/alarma-ux
 ```
 
 2️⃣ **Accede al directorio del proyecto**:
 
 ```sh
-cd repo-angular
+cd alarma
 ```
 
 3️⃣ **Instala las dependencias**:
@@ -51,7 +50,12 @@ cd repo-angular
 ```sh
 npm install
 ```
-
+## ⚠️ **Solución de Problemas**
+- Si tienes errores al instalar dependencias, prueba:
+```sh
+rm -rf node_modules package-lock.json
+npm install
+```
 ---
 
 ## ▶️ **Ejecutar el Proyecto en Desarrollo**
@@ -59,7 +63,7 @@ npm install
 Para iniciar la aplicación en **modo desarrollo**, usa:
 
 ```sh
-ng serve
+ng serve --open
 ```
 
 Esto iniciará un servidor local en:
@@ -78,7 +82,7 @@ ng serve --open
 
 ## 💁️ **Estructura del Proyecto**
 
-```
+```md
 repo-angular/
 │── src/                  # Código fuente del proyecto
 │   ├── app/              # Componentes y servicios principales
@@ -106,22 +110,26 @@ repo-angular/
   ng serve --port=4300
   ```
 
-- Si tienes errores en dependencias, intenta:
+## ⚠️ **Solución de Problemas**
+- Si tienes errores al instalar dependencias, prueba:
+```sh
+rm -rf node_modules package-lock.json
+npm install
+```
+- Si el servidor no responde, asegúrate de que el puerto 4200 no esté ocupado:
+```sh
+npx kill-port 4200
+```
+- Si el problema persiste, verifica qué proceso usa ese puerto:
+```sh
+lsof -i :4200   # Mac/Linux
+netstat -ano | findstr :4200  # Windows
+```
 
-  ```sh
-  rm -rf node_modules package-lock.json
-  npm install
-  ```
-
-- Si el servidor no responde, asegúrate de que no haya otro proceso en el puerto **4200**:
-
-  ```sh
-  npx kill-port 4200
-  ```
 
 ---
 
 ## 📞 **Soporte**
-Si tienes problemas al ejecutar el proyecto, puedes escribirnos a 
-- "nico.ing.mec.2@gmail.com", "jc.hernandez23@uniandes.edu.co", "ne.garciav1@uniandes.edu.co"
-- Si es necesario whatsapp "+57 3168662046" ó tambien SLACK, estaremos pendientes
+Si tienes problemas al ejecutar el proyecto, contáctanos a:
+📧 Correo:  **jc.hernandez23@uniandes.edu.co**, **ne.garciav1@uniandes.edu.co**, **nico.ing.mec.2@gmail.com**  
+💬 También estamos disponibles en **Slack**.

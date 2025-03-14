@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 interface Device {
   name: string;
@@ -14,7 +15,6 @@ interface Alarm {
   enabled: boolean;
 }
 
-
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
@@ -22,11 +22,14 @@ interface Alarm {
 })
 
 export class DevicesComponent implements OnInit {
-
+  isChecked = false;
+  toggleChanged() {
+    console.log("Estado del toggle:", this.isChecked);
+  }
   devices: Device[] = [
-    { 
-      name: 'Iphone Nicolas', 
-      status: 'Desconectado', 
+    {
+      name: 'Iphone Nicolas',
+      status: 'Desconectado',
       icon: 'smartphone',
       alarms: [
         { type: 'Alarma 1', time: '08:00 PM', icon: 'alarm', enabled: true },
@@ -34,9 +37,9 @@ export class DevicesComponent implements OnInit {
         { type: 'Alarma 3', time: '18:00 AM', icon: 'alarm', enabled: true }
       ]
     },
-    { 
-      name: 'Ipad Nicolas', 
-      status: 'Conectado', 
+    {
+      name: 'Ipad Nicolas',
+      status: 'Conectado',
       icon: 'smartphone' ,
       alarms: [
         { type: 'Alarma 1', time: '08:00', icon: 'alarm', enabled: true },
@@ -44,9 +47,9 @@ export class DevicesComponent implements OnInit {
         { type: 'Alarma 3', time: '18:00', icon: 'alarm', enabled: true }
       ]
     },
-    { 
-      name: 'Teléfono trabajo', 
-      status: 'Desconectado', 
+    {
+      name: 'Teléfono trabajo',
+      status: 'Desconectado',
       icon: 'smartphone',
       alarms: [
         { type: 'Alarma 1', time: '08:00', icon: 'alarm', enabled: true },
@@ -60,7 +63,7 @@ export class DevicesComponent implements OnInit {
   isAlertVisible = false;
 
 
-  constructor() { 
+  constructor() {
 
   }
 

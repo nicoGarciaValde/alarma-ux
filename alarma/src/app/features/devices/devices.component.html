@@ -3,9 +3,9 @@
   <div class="device-content-container">
     <div class="devices-container">
       <div class="device-list" [ngClass]="{ 'collapsed': selectedDevice }">
-        <mat-card 
-          class="device-item" 
-          *ngFor="let device of devices" 
+        <mat-card
+          class="device-item"
+          *ngFor="let device of devices"
           (click)="onSelect(device)"
         >
           <mat-card-content class="device-content">
@@ -20,7 +20,7 @@
         </mat-card>
       </div>
     </div>
-  
+
     <div class="device-details" *ngIf="selectedDevice">
       <div class="device-details-header">
         <span class="device-status">{{ selectedDevice.status }}</span>
@@ -36,7 +36,11 @@
         <span>Horas programadas</span>
         <div class="alarm-item" *ngFor="let alarm of selectedDevice.alarms">
           <div class="primary-toggle">
-            <mat-slide-toggle class="toggle" [disabled]="selectedDevice.status !== 'Conectado'" [checked]="selectedDevice.status"></mat-slide-toggle>
+            <!-- <mat-slide-toggle class="toggle" [disabled]="selectedDevice.status !== 'Conectado'" [checked]="selectedDevice.status"></mat-slide-toggle> -->
+            <label class="custom-toggle">
+              <input type="checkbox" [disabled]="selectedDevice.status !== 'Conectado'" [checked]="selectedDevice.status">
+              <span class="slider"></span>
+            </label>
           </div>
           <div class="alarm-info">
             <mat-icon>{{ alarm.icon }}</mat-icon>

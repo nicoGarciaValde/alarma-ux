@@ -7,7 +7,7 @@
 }
 .device-details-header {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
   font-size: 22px;
@@ -54,8 +54,8 @@
 
 .alarm-item {
   display: flex;
-  align-items: center; 
-  gap: 50px; 
+  align-items: center;
+  gap: 50px;
   margin-bottom: 30px;
 }
 
@@ -187,9 +187,72 @@
   color: var(--on-surface);
 }
 
-::ng-deep .mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled) .mdc-switch__shadow {
-  background-color: var(--primary);
+/* Contenedor del toggle */
+.custom-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
 }
-.mi-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled) .mdc-switch__track {
-  background-color: var(--primary);
+
+/* Ocultar el checkbox original */
+.custom-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Estilo del fondo del switch */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e0e0e0; /* Gris claro cuando está apagado */
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+/* Estilo del thumb (botón circular) */
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #6e6a6a; /* Gris oscuro cuando está apagado */
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* Estilo cuando está activado */
+input:checked + .slider {
+  background-color: #ffb38a; /* Fondo naranja cuando está encendido */
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+  background-color: white;
+}
+
+/* 🔴 Estilos cuando el toggle está deshabilitado */
+input:disabled + .slider {
+  background-color: #2a1f1c !important; /* Fondo oscuro cuando está deshabilitado */
+  cursor: not-allowed;
+}
+
+input:disabled + .slider::before {
+  background-color: #6b5b56 !important; /* Thumb más opaco */
+}
+
+/* Reducir opacidad cuando está deshabilitado */
+input:disabled:checked + .slider {
+  background-color: #3b2a26 !important; /* Naranja opaco cuando está deshabilitado */
+}
+
+input:disabled:checked + .slider::before {
+  background-color: #8a756e !important; /* Blanco opaco */
 }
