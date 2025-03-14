@@ -23,8 +23,12 @@ cd alarma-ux
 ```
 
 3️⃣ Navega a la aplicación que desees ejecutar
+- Para la app web
 ```sh
 cd alarma    # Para la versión web
+```
+- Para la app mobile
+```sh
 cd mobile    # Para la versión móvil
 ```
 
