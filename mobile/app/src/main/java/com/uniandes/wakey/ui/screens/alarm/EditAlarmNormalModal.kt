@@ -38,6 +38,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.uniandes.wakey.R
+import com.uniandes.wakey.formatNumberTime
+import com.uniandes.wakey.formatTime
 import com.uniandes.wakey.ui.components.DaysSelection
 import com.uniandes.wakey.ui.theme.WakeyWakeyTheme
 import kotlinx.coroutines.launch
@@ -76,7 +78,7 @@ fun ModalEditNormalSheet(
             ) {
                 Row {
                     Text(
-                        text = "${alarm.hour}:${alarm.minute} ${if (alarm.hour > 12) "PM" else "AM"}",
+                        text = formatTime(alarm.hour, alarm.minute),
                         style = MaterialTheme.typography.displaySmall.copy(
                             fontWeight = FontWeight.Bold
                         )

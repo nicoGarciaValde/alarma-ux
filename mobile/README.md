@@ -12,7 +12,7 @@ Breve descripción de la aplicación y su propósito.
 
 2. **Instalar el APK en el dispositivo**
     - En tu teléfono, habilita "Orígenes desconocidos" en Configuración > Seguridad.
-    - Transfiere el archivo `app.apk` a tu dispositivo y ábrelo para instalarlo.
+    - Transfiere el archivo `app-release.apk` a tu dispositivo y ábrelo para instalarlo.
 
 ---
 
