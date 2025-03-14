@@ -1,3 +1,87 @@
-<p>
-  devices works!
-</p>
+<div class="devices-main-container">
+
+  <div class="device-content-container">
+    <div class="devices-container">
+      <div class="device-list" [ngClass]="{ 'collapsed': selectedDevice }">
+        <mat-card 
+          class="device-item" 
+          *ngFor="let device of devices" 
+          (click)="onSelect(device)"
+        >
+          <mat-card-content class="device-content">
+            <div class="device-info">
+              <span class="device-name">{{ device.name }}</span>
+              <span class="device-status">{{ device.status }}</span>
+            </div>
+            <div class="device-image">
+              <mat-icon>{{ device.icon }}</mat-icon>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  
+    <div class="device-details" *ngIf="selectedDevice">
+      <div class="device-details-header">
+        <span class="device-status">{{ selectedDevice.status }}</span>
+        <mat-icon *ngIf="selectedDevice.status === 'Conectado'">check</mat-icon>
+        <mat-icon *ngIf="selectedDevice.status !== 'Conectado'">close</mat-icon>
+      </div>
+      <div class="device-details-main">
+        <span class="device-name">{{ selectedDevice.name }}</span>
+        <mat-icon class="device-icon">{{ selectedDevice.icon }}</mat-icon>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="device-details-alarms">
+        <span>Horas programadas</span>
+        <div class="alarm-item" *ngFor="let alarm of selectedDevice.alarms">
+          <div class="primary-toggle">
+            <mat-slide-toggle class="toggle" [disabled]="selectedDevice.status !== 'Conectado'" [checked]="selectedDevice.status"></mat-slide-toggle>
+          </div>
+          <div class="alarm-info">
+            <mat-icon>{{ alarm.icon }}</mat-icon>
+            <span>{{ alarm.time }}</span>
+          </div>
+          <span>{{ alarm.type }}</span>
+        </div>
+      </div>
+      <div class="device-details-footer">
+        <div></div>
+        <button mat-button class="primary-btn" [disabled]="selectedDevice.status !== 'Conectado'">
+         Guardar
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <div class="fab-container">
+    <button mat-fab class="fab-bottom-right" (click)="toggleAlert()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="alert-device" *ngIf="isAlertVisible">
+
+    <div class="background-alert">
+      <span class="display-small">Agregar nuevo dispostivo</span>
+      <span class="title-large" style="margin-top: 42px;">Sus Dispositivos</span>
+      <span class="headline-small" style="margin-top: 26px;">Dispositivo 1</span>
+      <span class="body-large">Conectado</span>
+      <span class="headline-small">Dispositivo 1</span>
+      <span class="body-large">Conectado</span>
+
+      <span class="title-large" style="margin-top: 52px;">Sus Dispositivos</span>
+      <span class="headline-small">Dispositivo 1</span>
+      <span class="body-large">Conectado</span>
+      <span class="headline-small">Dispositivo 1</span>
+      <span class="body-large">Conectado</span>
+      <diV class="device-details-footer">
+        <div></div>
+        <button mat-button class="primary-btn" (click)="toggleAlert()">
+          Volver
+        </button>
+      </diV>
+    </div>
+  </div>
+
+</div>
