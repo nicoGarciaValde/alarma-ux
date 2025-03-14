@@ -53,7 +53,7 @@ fun ModalMorningAlarmSheet(
     BaseAlarmModal(
         modifier = modifier,
         alarm,
-        onDismissRequest = onDismissRequest,
+        onDismissRequest = { onDismissRequest(it.copy(isMorning = true)) },
         sheetState = sheetState,
         isMorningAlarm = true,
         snackbarHostState = snackbarHostState,
